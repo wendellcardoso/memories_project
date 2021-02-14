@@ -1,4 +1,5 @@
 import Post from "../models/postModel.js";
+import mongoose from 'mongoose';
 
 export const getPosts = async (req, res) => {
     try {
