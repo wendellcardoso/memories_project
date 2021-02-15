@@ -24,6 +24,11 @@ const Form = ({ currentId, setCurrentId }) => {
         }
     }, [post]);
 
+    const clear = () => {
+        setCurrentId(null);
+        setPostData({ creator: "", title: "", message: "", tags: "", selectedFile: "" });
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
@@ -31,12 +36,10 @@ const Form = ({ currentId, setCurrentId }) => {
 
         clear();
 
+        window.location = "/";
+
     };
 
-    const clear = () => {
-        setCurrentId(null);
-        setPostData({ creator: "", title: "", message: "", tags: "", selectedFile: "" });
-    };
 
     return (
         <Paper className={classes.paper}>
