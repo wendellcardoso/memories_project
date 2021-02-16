@@ -36,7 +36,7 @@ const Form = ({ currentId, setCurrentId }) => {
 
         clear();
 
-        window.location = "/";
+        // window.location = "/";
 
     };
 
