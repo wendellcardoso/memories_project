@@ -11,12 +11,17 @@ import useStyles from "./styles";
 import Icon from "./icon";
 import Input from "./Input";
 
+import { signin, signup } from "../../actions/auth";
+
 // import useStyles from "./styles";
+
+const initialState = { firstName: '', lastName: '', email: '', password: '', confirmPassword: '' };
 
 const Auth = () => {
     const classes = useStyles();
     const [showPassword, setShowPassword] = useState(false);
     const [isSignup, setIsSignup] = useState(false);
+    const [formData, setFormaData] = useState(initialState);
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -24,9 +29,18 @@ const Auth = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
+        if (isSignup) {
+            dispatch(signup(formData, history));
+        } else {
+            dispatch(signin(formData, history));
+        }
     };
 
-    const handleChange = () => {
+    const handleChange = (e) => {
+        const { target: { name, value } } = e;
+
+        setFormaData({ ...formData, [name]: value });
 
     };
 
